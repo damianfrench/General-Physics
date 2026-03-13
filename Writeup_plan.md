@@ -1,4 +1,5 @@
 # Theory- LWR Model of traffic flow
+## ~ 200-220 words
 The Lighthill-Whitham_Richards (LWR) models traffic flow in a 1D description, similar to the analysis of an incompressible fluid, dictated by mass conservation. Traffic is treated as having a macroscpic density $\rho$ and flow rate $q$, governed by the core principles of conservation laws and the flow-density relation. The former can be derived directly from the continuity equation
 
 $\frac{\partial\rho}{\partial t} + \nabla \cdot (\rho u) = 0 $
