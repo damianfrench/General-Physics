@@ -12,7 +12,7 @@ What is the scope(eg how far away from labs and which bus routes)?
 Fallowfield and rusholme?
 
 ## Coding
-People - 
+People - Aidan, Damian
 
 To model travel time, need to model both walking time (to uni and to nearest bus stop) and bus time.
 
@@ -52,8 +52,17 @@ And a walking model / time calcualtor.
 7. Add side streets?
 
 ## Poster
+### Theory Write-up
+People - Lucas, Tiane
+1. link back to the "physics" of our core courses
+- How does LWR extend from covered fluid dynamic concepts?
+2. Explanations of the method used (LWR)
+3. How did we analyse this data (CTM)
+4. Presenting final results with conclusions
+  
+### Designing Poster + Correcting Structure
+People - Josh, Keegan
 
-People - 
 
 Using Canva/Publisher/Powerpoint?
 
