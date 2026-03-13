@@ -10,5 +10,5 @@ $\frac{\partial\rho}{\partial t} +\frac{\partial q}{\partial x} =0$,
 the conservation law disctating the LWR model. However, this equation contains unknowns, making it undetermined. A relationship used between $q$ and $\rho$ here is known as the fundamental diagram. Acting as as the experimentally obtained relation of traffic, this shows increasing flow  with density to a critical point; after which congestion occurs causing reduced flow.
 
 Which model? greenshields? ($q = v_{max} \rho (1-\frac{\rho}{\rho_{max}}$)
-
+triangular? $q = v_f \cdot ρ$ for $ρ ≤ ρ_c$, and $q = w(ρ_{jam} - ρ) $for $ρ > ρ_c$
 
