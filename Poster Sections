@@ -1,7 +1,10 @@
 Abstract
 
 Intro
-- 
+- LWR method, rough constant density calculations etc
+- Modelling traffic flow through curry mile
+- Folium as python package, OSRM (Longitudinal distance calculations) and Naptan (Bus stop codes and longitudinal positions) as APIs
+- Rough order of magnitude calculations done via... 
 
 Theory
 
@@ -10,3 +13,4 @@ Results
 Discussion
 
 Conclusion
+
