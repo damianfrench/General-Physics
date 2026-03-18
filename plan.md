@@ -64,9 +64,9 @@ People - Lucas, Tiane
 People - Josh, Keegan
 
 
-Using Canva/Publisher/Powerpoint?
+Using Canva
 
-Link clearly to physics and our course. 
+Link clearly to physics and our course.
 - Fluid mechanics (it is a compressible flow, so explaining how that changes the ones we have learned)
 - Waves (the speed we find is essentially a wave speed for the traffic)
 
