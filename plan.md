@@ -24,7 +24,7 @@ coded in python and/or jupyter notebook.
 Data needed for buses:
 - Bus routes and stops, [MappingGM](https://mappinggm.org.uk/maps/exploregm/) count point = 810896, 57603, 944412
 - Distances between bus stops
-- Traffic data, [gov](https://roadtraffic.dft.gov.uk/local-authorities/E08000003)
+- Traffic data, [gov](https://roadtraffic.dft.gov.uk/local-authorities/E08000003) 
 - Traffic lights?? 
 
 Data for walking:
