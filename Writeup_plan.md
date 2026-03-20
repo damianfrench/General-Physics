@@ -1,6 +1,6 @@
 # Theory- LWR Model of traffic flow
 ## ~ 200-220 words
-The Lighthill-Whitham_Richards (LWR) models traffic flow in a 1D description, similar to the analysis of an compressible fluid, dictated by mass conservation. Traffic is treated as having a macroscpic density $\rho$ and flow rate $q$, governed by the core principles of conservation laws and the flow-density relation. The former can be derived directly from the continuity equation
+The Lighthill-Whitham_Richards (LWR) models traffic flow in a 1D description, similar to the analysis of a compressible fluid, dictated by mass conservation. Traffic is treated as having a macroscpic density $\rho$ and flow rate $q$, governed by the core principles of conservation laws and the flow-density relation. The former can be derived directly from the continuity equation
 
 $\frac{\partial\rho}{\partial t} + \nabla \cdot (\rho u) = 0 $
 
@@ -31,4 +31,16 @@ The road can be divided into discrete cells, and using discreet time steps yield
 $$ \Delta \rho_{i} = \rho_{i} (t+\Delta t) - \rho_{i}(t) = \frac{\Delta t}{\Delta x}[y_{i-1}(t) - y_i(t)] $$,
 
 acting as the update equation. This describes the flux, $y_i(t)$ from cell $i$ to $i+1$ at a time t. $\Delta x$ describes the width of the cell where $\Delta t$ is the time jump. This means the flux in each cell, $y_i$, is defined as the minimum acceptence of a vehicle from one cell to the next.
+
+Initialising the system by forcing each starting density to equal $\rho_0$ resets the inflow and outflow parameters of each cell, allowing a computation of $y_i(0)$. Using the update equation for each cell computes the forward step in time which results in many fluxes changing over the whole 1D space. This makes calculating the discrete velocity possible through taking the ratio of flux $y_i(t)$ and density $\rho_i(t)$ per each cell.
+It is then possible to determine the travel time for a vehicle between two positions using
+
+$$ T = \sum_{t=0}^{t_{end}} \Delta t, if       x_v(t_{end}) \leq x_{end} $$
+
+where $x_v(t_{end})$, the updated vehicle position is given by 
+
+$$ x_v(t+\Delta t) = x_v(t) + v_i(t) \Delta t $$
+
+for each time step, $\Delta t$.
+
 
