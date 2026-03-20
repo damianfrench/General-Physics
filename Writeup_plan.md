@@ -22,3 +22,13 @@ highlighting the pertubations that propogate at speeds that depend on a local de
 
 With the waves characteristics descibed by the LWR-Greenshields model, it becomes posible to determine how traffic density evolves with time. Prediciting the behaviour and estimaring travel time between two given points requires a numerical solution of the PDE shown above. The Cell Transition Model (CTM) provides a framework using discrete cells, meaning real traffic data can be applied to the LWR model, acting as a numerical solution to the characteristic wave behaviour.
 
+
+# CTM MODEL
+## ~ 100 Words
+
+The road can be divided into discrete cells, and using discreet time steps yields 
+
+$$ \Delta \rho_{i} = \rho_{i} (t+\Delta t) - \rho_{i}(t) = \frac{\Delta t}{\Delta x}[y_{i-1}(t) - y_i(t)] $$,
+
+acting as the update equation. This describes the flux, $y_i(t)$ from cell $i$ to $i+1$ at a time t. $\Delta x$ describes the width of the cell where $\Delta t$ is the time jump. This means the flux in each cell, $y_i$, is defined as the minimum acceptence of a vehicle from one cell to the next.
+
