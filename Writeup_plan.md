@@ -20,7 +20,7 @@ $\frac{dq}{d \rho} = v_{max}(1-\frac{2\rho}{\rho_{max}})$ ,
 
 highlighting the pertubations that propogate at speeds that depend on a local density. This forms shock waves that act as density discontinuities; defining the LWR model as a whole.
 
-With the waves characteristics descibed by the LWR-Greenshields model, it becomes posible to determine how traffic density evolves with time. Prediciting the behaviour and estimaring travel time between two given points requires a numerical solution of the PDE shown above. The Cell Transition Model (CTM) provides a framework using discrete cells, meaning real traffic data can be applied to the LWR model, acting as a numerical solution to the characteristic wave behaviour.
+With the waves characteristics descibed by the LWR-Greenshields model, it becomes posible to determine how traffic density evolves with time. Prediciting the behaviour and estimaring travel time between two given points requires a numerical solution of the PDE shown above. The Cell Transmission Model (CTM) provides a framework using discrete cells, meaning real traffic data can be applied to the LWR model, acting as a numerical solution to the characteristic wave behaviour.
 
 
 # CTM MODEL
@@ -30,9 +30,9 @@ The road can be divided into discrete cells, and using discreet time steps yield
 
 $$ \Delta \rho_{i} = \rho_{i} (t+\Delta t) - \rho_{i}(t) = \frac{\Delta t}{\Delta x}[y_{i-1}(t) - y_i(t)] $$,
 
-acting as the update equation. This describes the flux, $y_i(t)$ from cell $i$ to $i+1$ at a time t. $\Delta x$ describes the width of the cell where $\Delta t$ is the time jump. This means the flux in each cell, $y_i$, is defined as the minimum acceptence of a vehicle from one cell to the next.
+acting as the update equation. This describes the flux, $y_i(t)$ from cell $i$ to $i+1$ at a time t. $\Delta x$ describes the width of the cell where $\Delta t$ is the time jump. This means the flux in each cell, $y_i$, is defined as the minimum acceptance of a vehicle from one cell's sending capacity and the next cell's recieving capacity.
 
-Initialising the system by forcing each starting density to equal $\rho_0$ resets the inflow and outflow parameters of each cell, allowing a computation of $y_i(0)$. Using the update equation for each cell computes the forward step in time which results in many fluxes changing over the whole 1D space. This makes calculating the discrete velocity possible through taking the ratio of flux $y_i(t)$ and density $\rho_i(t)$ per each cell.
+The system is initialized by starting each cell with a uniform density,$\rho_0$, resetting the inflow and outflow parameters of each cell and allowing a computation of $y_i(0)$. Iteratively applying the update equation for each cell computes the forward step in time which results in many fluxes changing over the whole 1D road. This makes calculating the discrete velocity possible through taking the ratio of flux $y_i(t)$ and density $\rho_i(t)$ per each cell.
 It is then possible to determine the travel time for a vehicle between two positions using
 
 $$ T = \sum_{t=0}^{t_{end}} \Delta t, if       x_v(t_{end}) \leq x_{end} $$
