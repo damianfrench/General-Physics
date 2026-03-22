@@ -33,7 +33,7 @@ Data for walking:
 - Traffic lights??
 
 ### Potential plan for coding
-#### 13/03 to 19/03 - Minimal working version
+#### 13/03 to 21/03 - Minimal working version
 
 After first week of coding, aim to have a bus model that can get a time to travel from a bus stop to uni stop with these assumptions:
 1. Single lane road
@@ -50,6 +50,7 @@ And a walking model / time calcualtor.
 6. Time waiting for bus, [this](https://friedmanroy.github.io/blog/2023/Entropy/) article looks interesting and could be the source of another idea
 6. Tues vs Thurs
 7. Add side streets?
+
 
 ## Poster
 ### Theory Write-up
