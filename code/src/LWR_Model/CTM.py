@@ -53,6 +53,22 @@ class CTM_model:
         while current_step!=total_steps:
             return self.recursive_stepping(current_step+1,inlet_density,total_steps)
         return 
+    
+    def travel_time(self, start_cell, end_cell):
+        x = np.sum(self.cells_widths[:start_cell])  # physical position of start cell
+        
+        for t, density_snapshot in enumerate(self.history):
+            cell = np.searchsorted(np.cumsum(self.cells_widths), x)
+            cell = np.clip(cell, 0, len(density_snapshot) - 1)
+            
+            v = self.v_free * (1 - density_snapshot[cell] / self.jam_density)
+            x += v * self.step_width
+            
+            if cell >= end_cell:
+                return t * self.step_width
+        
+        return None
+
 
 
 
