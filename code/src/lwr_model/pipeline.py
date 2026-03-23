@@ -1,7 +1,8 @@
 from .distances import distance_lat_long, haversine_distance
 from .config import COUNT_POINT_IDS, FREE_SPEEDS, CELL_SIZE
 from .data import clean_count_data
-
+from numpy.polynomial import Polynomial
+import numpy as np
 def calculate_density_from_flow(countpointdf, free_speed):
     avg = sum(countpointdf['all_motor_vehicles']) / len(countpointdf['all_motor_vehicles'])
     density = avg / free_speed
@@ -43,6 +44,16 @@ def linear_density_gradient(point_density_arr, cell_arr):
         for j in range(cell_arr[i]):
             density_arr.append(point_density_arr[i][0] + delta_p * j)
     return density_arr
+
+def polynomial_density_gradient(point_density_arr, cell_arr):
+    cellies = [0]
+    for i in [0,1]:
+        cellies.append(cellies[i] + cell_arr[i])
+    counts = [point_density_arr[0][0], point_density_arr[1][0], point_density_arr[2][0]]
+    print(cellies, counts)
+    poly = Polynomial.fit(cellies, counts, deg=2)
+    return poly(np.arange(0,  int(sum(cell_arr)), 1))
+
 def start_offset(density_array, point_density, lat_new=53.44537775031849,
                  long_new=-2.2180905798922557, cell_size=CELL_SIZE):
     n_start = int(distance_lat_long(point_density[0][1], point_density[0][2],
@@ -56,6 +67,18 @@ def density_array_linear():
     density_array = linear_density_gradient(point_density_array, cell_array)
     offset_density_array = start_offset(density_array, point_density_array)
     return density_array, offset_density_array
+
+
+def density_array_polynomial():
+    df_count = clean_count_data()
+    point_density_array = point_density(df_count)
+    print(point_density_array)
+    cell_array = number_of_cells(point_density_array)
+    print(cell_array)
+    density_array = polynomial_density_gradient(point_density_array, cell_array)
+    offset_density_array = start_offset(density_array, point_density_array)
+    return density_array, offset_density_array
+
 
 def main():
     density_array, offset_density_array = density_array_linear()
