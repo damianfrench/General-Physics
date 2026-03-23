@@ -12,7 +12,6 @@ dependencies = [
     "requests",
     "folium",
     "matplotlib",
-    "math",
 ]
 
 [tool.setuptools.packages.find]
