@@ -5,23 +5,24 @@ from .data import clean_count_data
 def calculate_density_from_flow(countpointdf, free_speed):
     avg = sum(countpointdf['all_motor_vehicles']) / len(countpointdf['all_motor_vehicles'])
     density = avg / free_speed
+    density=density/1000
     return [density, countpointdf['latitude'].values[0], countpointdf['longitude'].values[0]]
 
 def point_density(data_frame, countpointids = COUNT_POINT_IDS):
     arr = []
     for id in countpointids:
+        v_free = FREE_SPEEDS[id] * (1000/3600)  # km/h → m/s
         countdf = data_frame[data_frame['count_point_id'] == id]
-        arr.append(calculate_density_from_flow(countdf, FREE_SPEEDS[id]))
+        arr.append(calculate_density_from_flow(countdf, v_free))
 
     # Guess for bus density on bus only road and co ordinates of start of bus route and bus stop
-    arr.append([6, 53.45927628199057, -2.2276463370981574])
-    arr.append([6, 53.4645870298434, -2.2320827813567172])
+    arr.append([0.01, 53.45927628199057, -2.2276463370981574])
+    arr.append([0.01, 53.4645870298434, -2.2320827813567172])
     return arr
 
 def number_of_cells(point_density_arr, cell_size = CELL_SIZE):
     arr = []
     for i in range(len(point_density_arr) - 1):
-        print(i)
         d_actual = distance_lat_long(point_density_arr[i][1],point_density_arr[i][2],
                                      point_density_arr[i+1][1], point_density_arr[i+1][2])
         d_hav = haversine_distance(point_density_arr[i][1], point_density_arr[i][2],

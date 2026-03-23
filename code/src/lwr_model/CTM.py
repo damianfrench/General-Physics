@@ -39,34 +39,39 @@ class CTM_model:
         return np.minimum(self.D[:-1],self.S[1:])
 
     def recursive_stepping(self,current_step,inlet_density,total_steps=100):
-        q=self.density*self.velocity_greenshields()
-        self.D=self.calculate_D(q)
-        self.S=self.calculate_S()
-        self.y=self.calculate_y()
-        jump=(self.step_width/self.cells_widths[1:-1])*(self.y[:-1]-self.y[1:])
-        self.density[1:-1]=self.density[1:-1]+jump
-
         self.density[0] = inlet_density             # fixed inlet density
         self.density[-1] = self.density[-2]     # free outflow
-
-        self.history.append(self.density.copy())
         while current_step!=total_steps:
-            return self.recursive_stepping(current_step+1,inlet_density,total_steps)
+            q=self.density*self.velocity_greenshields()
+            self.D=self.calculate_D(q)
+            self.S=self.calculate_S()
+            self.y=self.calculate_y()
+            jump=(self.step_width/self.cells_widths[1:-1])*(self.y[:-1]-self.y[1:])
+            self.density[1:-1]=self.density[1:-1]+jump
+            self.history.append(self.density.copy())
+            current_step+=1
         return 
     
-    def travel_time(self, start_cell, end_cell):
+    def run(self,inlet_density,total_time=None,total_steps=100):
+        if total_time!=None:
+            total_steps=int(total_time/self.step_width)
+        self.recursive_stepping(0,inlet_density,total_steps)
+        return 
+    
+    def travel_time(self, start_cell, end_cell,start_time=0):
+        start_timestep = round(start_time / self.step_width)
+        start_timestep = min(start_timestep, len(self.history) - 1)
         x = np.sum(self.cells_widths[:start_cell])  # physical position of start cell
-        
-        for t, density_snapshot in enumerate(self.history):
+        for t, density_snapshot in enumerate(self.history[start_timestep:]):
             cell = np.searchsorted(np.cumsum(self.cells_widths), x)
             cell = np.clip(cell, 0, len(density_snapshot) - 1)
-            
+            print(cell,t)
             v = self.v_free * (1 - density_snapshot[cell] / self.jam_density)
             x += v * self.step_width
             
             if cell >= end_cell:
                 return t * self.step_width
-        
+
         return None
 
 
