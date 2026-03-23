@@ -72,5 +72,3 @@ class CTM_model:
 
 
 
-
-

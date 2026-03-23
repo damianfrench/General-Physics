@@ -1,10 +1,11 @@
 import requests
 import math
+import certifi
 
 def distance_lat_long(lat1, lon1, lat2, lon2):
     osrm_url = f"https://router.project-osrm.org/route/v1/driving/{lon1},{lat1};{lon2},{lat2}"
     params = {"overview": "full", "geometries": "geojson"}
-    osrm_req = requests.get(osrm_url, params=params)
+    osrm_req = requests.get(osrm_url, params=params, verify=certifi.where())
     osrm_data = osrm_req.json()
     route = osrm_data['routes'][0]
     distance = route['distance']
@@ -14,7 +15,7 @@ def distance_lat_long(lat1, lon1, lat2, lon2):
 def walk_lat_long(lat1, lon1, lat2, lon2):
     osrm_url = f"https://router.project-osrm.org/route/v1/walking/{lon1},{lat1};{lon2},{lat2}"
     params = {"overview": "full", "geometries": "geojson"}
-    osrm_req = requests.get(osrm_url, params=params)
+    osrm_req = requests.get(osrm_url, params=params, verify=certifi.where())
     osrm_data = osrm_req.json()
     route = osrm_data['routes'][0]
     distance = route['distance']
