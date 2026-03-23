@@ -18,7 +18,9 @@ def walk_lat_long(lat1, lon1, lat2, lon2):
     osrm_data = osrm_req.json()
     route = osrm_data['routes'][0]
     distance = route['distance']
-    return distance
+    time = route['duration']
+    geometries = route['geometry']['coordinates']
+    return distance, time, geometries
 
 def haversine_distance(lat1, lon1, lat2, lon2):
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
