@@ -18,7 +18,7 @@ Applying this with the conservation condition gives a PDE describing characteris
 
 $\frac{dq}{d \rho} = v_{max}(1-\frac{2\rho}{\rho_{max}})$ ,
 
-highlighting the pertubations that propogate at speeds that depend on a local density. Free flow is where $\rho < \rho_{max}/2 $, providing a positive wavespeed propogating infomation forward with the traffic. Whereas, in congestion, $\rho > \rho_{max}/2$, negative wavespeeds force disturbances to flow upstream and captures the backwards growth of traffic jams.
+highlighting the pertubations that propogate at speeds depending on a local density. Free flow is where $\rho < \rho_{max}/2 $, providing a positive wavespeed propogating infomation forward with the traffic. Whereas, in congestion, $\rho > \rho_{max}/2$, negative wavespeeds force disturbances to flow upstream and captures the backwards growth of traffic jams.
 
 Using the LWR-Greenshields model now makes it possible to determine how traffic density evolves with time. Prediciting the behaviour and estimating travel time between two given points requires a numerical solution of the PDE shown above. The Cell Transmission Model (CTM) provides a framework using discrete cells, meaning real traffic data can be applied to the LWR model, acting as a numerical solution to the characteristic wave behaviour.
 
@@ -28,9 +28,9 @@ Using the LWR-Greenshields model now makes it possible to determine how traffic 
 
 The road can be divided into discrete cells, and using discreet time steps yields 
 
-$$ \Delta \rho_{i} = \rho_{i} (t+\Delta t) - \rho_{i}(t) = \frac{\Delta t}{\Delta x}[y_{i-1}(t) - y_i(t)] $$,
+$$ \Delta \rho_{i} = \rho_{i} (t+\Delta t) - \rho_{i}(t) = \frac{\Delta t}{\Delta x}[y_{i-1}(t) - y_i(t)] $$
 
-acting as the update equation. This describes the flux, $y_i(t)$ from cell $i$ to $i+1$ at a time t. $\Delta x$ describes the width of the cell where $\Delta t$ is the time jump. The flux between each cell is then defined as 
+, acting as the update equation. This describes the flux, $y_i(t)$ from cell $i$ to $i+1$ at a time t. $\Delta x$ describes the width of the cell where $\Delta t$ is the time jump. The flux between each cell is then defined as 
 
 $y_i = min(D_i, S_{i+1})$
 
@@ -56,6 +56,21 @@ for each time step, $\Delta t$.
 - How do small variations in traffic density/initial conditions change the overall travel times at each departure time? Try to add some nonlinearity to the results to show why traffic flow is fundamentally different to incompressible flow and why small deviations in arrival time are soley due to the nonlinear behaviour of the greensheilds model. Near the critical point the system often becomes maximally senstive. (optional but possibly worth the analysis marks if theres extra time)
 - Final conclusion of the best time to leave compared to what time people usually leave for labs
 - Link why its the compressible nature of traffic flow that makes some people late
+
+## Results + Discussion: ~ 80 words
+
+Using the iterative model over the intiial traffic data shows a traffic shock wave evolving through the road in FIGURE1, highlighting the nature of discontinuities in the LWR model.
+
+It is also clear to see where a traffic jam has formed, creating a shadow of higher density; displaying further effects of these characteristic waves. Taking different departure times and accounting for bus stops allows for seeing the impact on this discontinuity wave on overall travel time, making it possible for determining the most efficient time to leave to complete the journey. This is shown in FIGURE2, where the ideal departure time is TIME.
+
+"""
+After gathering data from physics students, the average departure time was $8:33$ which explains why some students are often arriving to schuster after 9am. The nonlinear nature of traffic flow means there is a dependency on the slight variations of initial conditions day-to-day. Accounting for empirically founded variations up to 10% on average commutor routes makes it possible to also determine the reliability of a departure time. FIGURE2 also highlights how although $8:35$ may be the most efficient departure time, $8:20$ is much more reliable, meaning there is a higher chance of arriving to Schuster on time for every journey. This explains why although many students think that $8:35$ is an appropriate departure time, in reality leaving at $8:20$ is much more consistent for arriving on time.
+"""
+
+After gathering data from physics students, the average departure time was $8:33$. While this seems like the average student always arrives on time, the reality of the nonlinear traffic flow can easily be overlooked. To account for this natural characteristic of the flow, slight variations in initial conditions were applied 
+
+
+which explains why some students are often arriving to schuster after 9am. The nonlinear nature of traffic flow means there is a dependency on the slight variations of initial conditions day-to-day. Accounting for empirically founded variations up to 10% on average commutor routes makes it possible to also determine the reliability of a departure time. FIGURE2 also highlights how although $8:35$ may be the most efficient departure time, $8:20$ is much more reliable, meaning there is a higher chance of arriving to Schuster on time for every journey. This explains why although many students think that $8:35$ is an appropriate departure time, in reality leaving at $8:20$ is much more consistent for arriving on time.
 
 
 
