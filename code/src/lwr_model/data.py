@@ -1,7 +1,8 @@
 import pandas as pd
-from pygments.lexers import q
+import io
+import requests
 
-from .config import RAW_COUNT_DATA, HOUR, DIRECTIONS, COUNT_POINT_IDS
+from .config import RAW_COUNT_DATA, HOUR, DIRECTIONS, COUNT_POINT_IDS, NAPTAN_URL
 
 
 def clean_count_data(data_file = RAW_COUNT_DATA, count_point_id = COUNT_POINT_IDS,direction = DIRECTIONS):
@@ -19,3 +20,11 @@ def clean_count_data(data_file = RAW_COUNT_DATA, count_point_id = COUNT_POINT_ID
     df_count = df_count[df_count['direction_of_travel'].isin(direction)]
     df_count = df_count[df_count['hour'].isin(HOUR)]
     return df_count
+
+
+def get_naptan_data(url=NAPTAN_URL):
+
+    response = requests.get(url)
+    response.raise_for_status()
+    df = pd.read_csv(io.StringIO(response.text), low_memory=True)
+    return df

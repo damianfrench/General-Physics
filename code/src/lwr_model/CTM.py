@@ -65,7 +65,6 @@ class CTM_model:
         for t, density_snapshot in enumerate(self.history[start_timestep:]):
             cell = np.searchsorted(np.cumsum(self.cells_widths), x)
             cell = np.clip(cell, 0, len(density_snapshot) - 1)
-            print(cell,t)
             v = self.v_free * (1 - density_snapshot[cell] / self.jam_density)
             x += v * self.step_width
             
