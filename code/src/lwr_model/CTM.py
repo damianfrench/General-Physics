@@ -62,14 +62,17 @@ class CTM_model:
         start_timestep = round(start_time / self.step_width)
         start_timestep = min(start_timestep, len(self.history) - 1)
         x = np.sum(self.cells_widths[:start_cell])  # physical position of start cell
+        trajectory_x=[x]
+        trajectory_t=[start_time]
         for t, density_snapshot in enumerate(self.history[start_timestep:]):
             cell = np.searchsorted(np.cumsum(self.cells_widths), x)
             cell = np.clip(cell, 0, len(density_snapshot) - 1)
             v = self.v_free * (1 - density_snapshot[cell] / self.jam_density)
             x += v * self.step_width
-            
+            trajectory_x.append(x)
+            trajectory_t.append(start_time + (t+1)*self.step_width)
             if cell >= end_cell:
-                return t * self.step_width
+                return t * self.step_width, np.array(trajectory_x),np.array(trajectory_t)
 
         return None
 
