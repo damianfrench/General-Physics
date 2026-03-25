@@ -57,22 +57,24 @@ for each time step, $\Delta t$.
 - Final conclusion of the best time to leave compared to what time people usually leave for labs
 - Link why its the compressible nature of traffic flow that makes some people late
 
-## Results + Discussion: ~ 80 words
+## Results: ~ 80 words
 
-Using the iterative model over the intiial traffic data shows a traffic shock wave evolving through the road in FIGURE1, highlighting the nature of discontinuities in the LWR model.
+Using the iterative model over the intiial traffic data shows a traffic shock wave evolving through the road in FIGURE1, highlighting the nature of waves in the LWR model.
 
-It is also clear to see where a traffic jam has formed, creating a shadow of higher density; displaying further effects of these characteristic waves. Taking different departure times and accounting for bus stops allows for seeing the impact on this discontinuity wave on overall travel time, making it possible for determining the most efficient time to leave to complete the journey. This is shown in FIGURE2, where the ideal departure time is TIME.
+It is also clear to see where a traffic jam has formed, creating an upstream flow of greater density; displaying further effects of these characteristic waves. Taking different departure times and accounting for bus stops allows for seeing the impact on this discontinuity wave on overall travel time, making it possible for determining the most efficient time to leave to complete the journey. This is shown in FIGURE2, where the ideal departure time is TIME.
 
-"""
-After gathering data from physics students, the average departure time was $8:33$ which explains why some students are often arriving to schuster after 9am. The nonlinear nature of traffic flow means there is a dependency on the slight variations of initial conditions day-to-day. Accounting for empirically founded variations up to 10% on average commutor routes makes it possible to also determine the reliability of a departure time. FIGURE2 also highlights how although $8:35$ may be the most efficient departure time, $8:20$ is much more reliable, meaning there is a higher chance of arriving to Schuster on time for every journey. This explains why although many students think that $8:35$ is an appropriate departure time, in reality leaving at $8:20$ is much more consistent for arriving on time.
-"""
+## Discussion: ~150 words
 
-After gathering data from physics students, the average departure time was $8:33$. While this seems like the average student always arrives on time, the reality of the nonlinear traffic flow can easily be overlooked. To account for this natural characteristic of the flow, slight variations in initial conditions were applied 
+After gathering data from physics students, the average departure time was $8:33$. While this seems like a close to optimal time, the reality of the nonlinear traffic model can easily be overlooked. To account for this natural characteristic of the flow, slight variations in initial conditions were applied and are shown in FIGURE2. Variations of $3%$ reflect the empirical traffic changes on the same day of the week in constant time windows and are enough to highlight the nonlinearity of the traffic model. These results explain why the average student usually does arrive on time but can often run late due to traffic discontinuities arising from small variations in the initial conditions. By this logic, $8:20$ is a more reliable departure time, meaning leaving at this time is unlikely to result in being late.
 
 
-which explains why some students are often arriving to schuster after 9am. The nonlinear nature of traffic flow means there is a dependency on the slight variations of initial conditions day-to-day. Accounting for empirically founded variations up to 10% on average commutor routes makes it possible to also determine the reliability of a departure time. FIGURE2 also highlights how although $8:35$ may be the most efficient departure time, $8:20$ is much more reliable, meaning there is a higher chance of arriving to Schuster on time for every journey. This explains why although many students think that $8:35$ is an appropriate departure time, in reality leaving at $8:20$ is much more consistent for arriving on time.
+Approximations used throughout the investigation were 
 
-
+the linear speed-density relation of Greenshields
+1D + Homogeneous road !!!!!!!!!!!!!!!!!!!
+Grided numerical diffusion ( grid sizes?)
+Timestep condition for stability : timestep <= deltax/vmax
+Static initial conditions: accounted for by variation considerations
 
 # Conclusion
 
