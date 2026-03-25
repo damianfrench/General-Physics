@@ -58,14 +58,14 @@ def start_offset(density_array, point_density, lat_new=53.44537775031849,
                  long_new=-2.2180905798922557, cell_size=CELL_SIZE):
     n_start = int(distance_lat_long(point_density[0][1], point_density[0][2],
                                     lat_new, long_new)/cell_size)
-    return density_array[n_start:]
+    return density_array[n_start:], n_start
 
 def density_array_linear():
     df_count = clean_count_data()
     point_density_array = point_density(df_count)
     cell_array = number_of_cells(point_density_array)
     density_array = linear_density_gradient(point_density_array, cell_array)
-    offset_density_array = start_offset(density_array, point_density_array)
+    offset_density_array, _ = start_offset(density_array, point_density_array)
     return density_array, offset_density_array
 
 
@@ -76,7 +76,7 @@ def density_array_polynomial():
     cell_array = number_of_cells(point_density_array)
     print(cell_array)
     density_array = polynomial_density_gradient(point_density_array, cell_array)
-    offset_density_array = start_offset(density_array, point_density_array)
+    offset_density_array, _ = start_offset(density_array, point_density_array)
     return density_array, offset_density_array
 
 
