@@ -68,14 +68,19 @@ It is also clear to see where a traffic jam has formed, creating an upstream flo
 After gathering data from physics students, the average departure time was $8:33$. While this seems like a close to optimal time, the reality of the nonlinear traffic model can easily be overlooked. To account for this natural characteristic of the flow, slight variations in initial conditions were applied and are shown in FIGURE2. Variations of $3%$ reflect the empirical traffic changes on the same day of the week in constant time windows and are enough to highlight the sensitivities of the traffic model. These results explain why the average student usually does arrive on time but can often run late due to traffic discontinuities arising from small variations in the initial conditions. By this logic, $8:20$ is a more reliable departure time, meaning leaving at this time is unlikely to result in being late.
 
 
-Approximations used throughout the investigation were 
+Key approximmaitons included the Greenshields linear speed-density relation, a 1D homogenous road and static initial conditions. Timesteps were also constrained by the CFL condition, $\Delta t \leq \Delta x /v_{max}$, for stability. Extending to a 2D road with more dynamic boundary conditions and using a more detailed, empirically grounded fundamental diagram would improve accuracy.
+
 
 the linear speed-density relation of Greenshields
 1D + Homogeneous road !!!!!!!!!!!!!!!!!!!
 Grided numerical diffusion ( grid sizes?)
-Timestep condition for stability : timestep <= deltax/vmax
+Timestep condition for stability : timestep <= deltax/vmax (CFL)
 Static initial conditions: accounted for by variation considerations
+
+
+##
+
 
 # Conclusion
 
-
+The CTM successfully models traffic shock waves propogating along the route, which reproduces the characteristic waves predicted by the LWR-Greenshields approach. Although the travel time analysis does predict TIME as the optimum departure time, the density-dependent sensitivity of flow near $\rho_{max}/2$ causes small purtubations in initial conditions and disproportionately affects travel time. Accounting for realistic week-to-week variations of $3%$ shows TIME is the most reliable departure time. This shows the compressible nature of traffic flow, which can be overlooked by incompressible models, causes fluctuations in arrival time; highlighting a fundamental reason for why a student may sometimes arrive late to schuster building for 9am.
