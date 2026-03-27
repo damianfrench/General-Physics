@@ -84,3 +84,7 @@ Static initial conditions: accounted for by variation considerations
 # Conclusion
 
 The CTM successfully models traffic shock waves propogating along the route, which reproduces the characteristic waves predicted by the LWR-Greenshields approach. Although the travel time analysis does predict TIME as the optimum departure time, the density-dependent sensitivity of flow near $\rho_{max}/2$ causes small purtubations in initial conditions and disproportionately affects travel time. Accounting for realistic week-to-week variations of $3%$ shows TIME is the most reliable departure time. This shows the compressible nature of traffic flow, which can be overlooked by incompressible models, causes fluctuations in arrival time; highlighting a fundamental reason for why a student may sometimes arrive late to schuster building for 9am.
+
+
+
+Although the model was applied to one road only, it is possible to use this analysis on other roads; considering intersections inflow, outflow and wider traffic contributions. Expanding this model to mutliple lanes would give a clearer picture of the true traffic flow, although much of this investigation would be unaffected due to locations of bus lanes.
